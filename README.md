@@ -9,58 +9,99 @@ This project automates the pipeline from initial discovery to AI-driven risk ass
 * **Exploit correlation** (SearchSploit)
 * **AI-based predictive risk analysis** (Gemini)
 
-**Setup the labraries:**
+
+---
+
+## ⚙️ Phase-1: Environment Setup
+
+Phase-1 focuses on preparing the environment, ensuring all dependencies, tools, and permissions are correctly configured before starting the scanning and analysis phases.
+
+---
+
+### 🔹 Step 0: Clone the Project Repository
+
+Clone the centralized vulnerability scanner project from GitHub:
+
+```bash
+git clone https://github.com/VedantKCSE/SecGuys.git
+```
+
+---
+
+### 🔹 Step 1: Navigate to Project Directory
+
+```bash
+cd SecGuys
+```
+
+---
+
+### 🔹 Step 2: Grant Execute Permission to Setup Script
+
+```bash
+chmod +x setup.sh
+```
+
+---
+
+### 🔹 Step 3: Run the Setup Script
+
 ```bash
 bash setup.sh
 ```
 
-
-
-**Phase-1** focuses on preparing the environment, ensuring all dependencies, tools, and permissions are correctly configured.
-
 ---
 
-## ⚙ Phase-1: Environment Setup
+### 🔧 What the Setup Script Does
 
-### Step 1: Navigate to project directory
+The `setup.sh` script performs the following tasks:
 
-```bash
-cd ~/projects/hitman/ready
-
-```
-
-### Step 2: Run Phase-1 setup
-
-```bash
-chmod +x phase1_setup.sh
-./phase1_setup.sh
-
-```
-
-**The setup script will:**
-
-* Install required system tools.
-* Install Python dependencies.
-* Update Nuclei templates.
-* Fix executable permissions for scripts.
+* Installs required system tools (Nmap, Nuclei, WhatWeb, SearchSploit, etc.)
+* Installs required Python libraries
+* Updates Nuclei templates to the latest version
+* Fixes executable permissions for project scripts
+* Ensures the environment is ready for scanning and analysis
 
 ---
 
 ## 🔍 Phase-2: Scanning & Normalization
 
-Run the main scanner to gather raw data:
+Phase-2 focuses on executing multiple scanning engines and consolidating their outputs into a single, normalized data structure for further analysis.
+
+---
+
+### 🔹 Step 1: Grant Execute Permission
 
 ```bash
-./v2.2.sh
-
+chmod +x scanner.sh
 ```
 
-**Generated Outputs:**
+---
 
-* `scan_results/nmap.xml` – Raw network discovery data.
-* `scan_results/nuclei.json` – Raw vulnerability findings.
-* `scan_results/exploits_raw.json` – Correlated exploit data.
-* `final.json` – **Normalized, AI-ready data.**
+### 🔹 Step 2: Run the Centralized Scanner
+
+```bash
+./scanner.sh
+```
+
+The scanner sequentially executes:
+
+* **WhatWeb** – Web technology fingerprinting
+* **Nikto** – Web server misconfiguration and insecure file detection
+* **Nmap** – Port and service discovery
+* **Nuclei** – Web vulnerability detection
+* **SearchSploit** – Exploit correlation
+
+---
+
+### 📂 Generated Outputs
+
+* `scan_results/whatweb.json` – Web technology stack detection.
+* `scan_results/nikto.txt` – Web server misconfigurations and insecure file findings.
+* `scan_results/nmap.xml` – Raw network and service discovery data.
+* `scan_results/nuclei.json` – Raw vulnerability scan findings.
+* `scan_results/exploits_raw.json` – Correlated public exploit data.
+* `final.json` – **Centralized, normalized, AI-ready vulnerability dataset.**
 
 ---
 
@@ -98,17 +139,20 @@ python3 analyze.py
 ## 📂 Final Directory Structure
 
 ```text
-ready/
-├── phase1_setup.sh
-├── v2.2.sh
+secguy/
+├── setup.sh
+├── scanner.sh
 ├── analyze.py
 ├── scan_results/
+│   ├── whatweb.json
+│   ├── nikito.txt
 │   ├── nmap.xml
 │   ├── nuclei.json
 │   └── exploits_raw.json
 ├── final.json
 ├── ai_report.md
 └── README.md
-
 ```
 * Ensure you have the necessary permissions to run network scans in your environment.
+
+
