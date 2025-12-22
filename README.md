@@ -87,6 +87,7 @@ chmod +x scanner.sh
 The scanner sequentially executes:
 
 * **WhatWeb** – Web technology fingerprinting
+* **Nikto** – Web server misconfiguration and insecure file detection
 * **Nmap** – Port and service discovery
 * **Nuclei** – Web vulnerability detection
 * **SearchSploit** – Exploit correlation
@@ -96,6 +97,7 @@ The scanner sequentially executes:
 ### 📂 Generated Outputs
 
 * `scan_results/whatweb.json` – Web technology stack detection.
+* `scan_results/nikto.txt` – Web server misconfigurations and insecure file findings.
 * `scan_results/nmap.xml` – Raw network and service discovery data.
 * `scan_results/nuclei.json` – Raw vulnerability scan findings.
 * `scan_results/exploits_raw.json` – Correlated public exploit data.
@@ -143,6 +145,7 @@ secguy/
 ├── analyze.py
 ├── scan_results/
 │   ├── whatweb.json
+│   ├── nikito.txt
 │   ├── nmap.xml
 │   ├── nuclei.json
 │   └── exploits_raw.json
@@ -151,4 +154,5 @@ secguy/
 └── README.md
 ```
 * Ensure you have the necessary permissions to run network scans in your environment.
+
 
